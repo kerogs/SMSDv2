@@ -1,0 +1,26 @@
+// Summer Theme
+$background: #1a1b2c;
+$primary: #9cb6f5;
+$primaryGradient: linear-gradient(-280deg, #9cb6f5 1.5%, #dde3fa 91.6%);
+$secondary: #9ea3c1;
+$text: #fff;
+$text2: hsl(220, 25%, 70%);
+$red: #f29a9c;
+$redt: rgba(242, 154, 156, 0.2);
+$green: #2da180;
+$greent: rgba(183, 228, 161, 0.2);
+$orange: #fbb693;
+$purple: #8a36ce;
+$yellow: #ceb736;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $background;
+    color: $text;
+    font-family: 'Inter', sans-serif;
+}

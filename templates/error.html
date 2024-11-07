@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSDv2  | Error</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+</head>
+<body>
+
+    <div class="ccenter">
+        <div class="card {{type}}">
+            <div>
+                {{icon|safe}}
+            </div>
+            <div>
+                <h1>{{code}}</h1>
+                <p>{{message|safe}}</p>
+                {% if button_name != "" %}
+                    <a href="{{ button_link }}"><button>{{ button_name }}</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
