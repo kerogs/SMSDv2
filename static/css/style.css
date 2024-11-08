@@ -8,4 +8,140 @@ body {
   background-color: #1a1b2c;
   color: #fff;
   font-family: "Inter", sans-serif;
+}
+
+main {
+  overflow: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 98vw;
+  height: 96vh;
+  display: flex;
+  gap: 10px;
+}
+main .left_box {
+  flex: 1;
+  background-color: #11111c;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+main .right_box {
+  width: 360px;
+  background-color: #11111c;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.total {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.total > div {
+  flex: 1;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-radius: 15px;
+  padding: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.total > div#allNav {
+  border: 1px solid rgb(158, 184, 245);
+}
+.total > div#allNav.active {
+  box-shadow: 0 0 10px rgb(158, 184, 245);
+  background-color: rgba(158, 184, 245, 0.1);
+}
+.total > div#allNav:hover {
+  background-color: rgba(158, 184, 245, 0.1);
+}
+.total > div#rubyNav {
+  border: 1px solid rgb(242, 154, 156);
+}
+.total > div#rubyNav.active {
+  box-shadow: 0 0 10px rgb(242, 154, 156);
+  background-color: rgba(242, 154, 156, 0.1);
+}
+.total > div#rubyNav:hover {
+  background-color: rgba(242, 154, 156, 0.1);
+}
+.total > div#staminaNav {
+  border: 1px solid rgb(236, 210, 58);
+}
+.total > div#staminaNav.active {
+  box-shadow: 0 0 10px rgb(236, 210, 58);
+  background-color: rgba(236, 210, 58, 0.1);
+}
+.total > div#staminaNav:hover {
+  background-color: rgba(236, 210, 58, 0.1);
+}
+.total > div#specialNav {
+  border: 1px solid rgb(138, 54, 206);
+}
+.total > div#specialNav.active {
+  box-shadow: 0 0 10px rgb(138, 54, 206);
+  background-color: rgba(138, 54, 206, 0.1);
+}
+.total > div#specialNav:hover {
+  background-color: rgba(138, 54, 206, 0.1);
+}
+.total > div > div {
+  flex: 1;
+}
+.total > div .left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.total > div .left p.title {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.total > div .left p.price {
+  font-size: 20px;
+  font-weight: 800;
+}
+.total > div .left p.maxdate {
+  font-size: 14px;
+}
+.total > div .right {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  text-align: right;
+  justify-content: end;
+}
+.total > div .right p {
+  font-size: 50px;
+}
+.total > div .right svg {
+  height: 60px;
+}
+.total > div .right svg.allNav {
+  fill: rgb(158, 184, 245);
+}
+.total > div .right svg.ruby {
+  fill: rgb(242, 154, 156);
+}
+.total > div .right svg.stamina {
+  fill: rgb(236, 210, 58);
+}
+.total > div .right svg.special {
+  fill: rgb(138, 54, 206);
+}
+
+.graph {
+  margin-top: 20px;
+  border: 1px solid rgb(158, 184, 245);
+  border-radius: 20px;
+  padding: 20px;
+}
+.graph canvas {
+  height: 400px;
 }/*# sourceMappingURL=style.css.map */
