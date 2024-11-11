@@ -1,4 +1,4 @@
-import os, json
+import os, json, uuid, datetime
 from colorama import Fore, init
 
 init(autoreset=True)
@@ -19,9 +19,15 @@ def addnotification(type: str = "ok", title: str = "Success", text:str = "Succes
     
     if(os.path.isfile(NOTIFICATION_PATH)):
         notifAdd = {
-            "type": type,
-            "title": title,
-            "message": text,
+            "notification_id": uuid.uuid4(),
+            # date format yyyy-mm-dd
+            "notification_date": datetime.now().strftime("%Y-%m-%d"),
+            "attribute": {
+                "type": type,
+                "title": title,
+                "message": text,
+            },
+
         }
 
         with open(NOTIFICATION_PATH, "r") as f:

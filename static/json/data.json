@@ -1,5 +1,14 @@
 [
     {
+        "name": "BOO4U2024",
+        "expiration": "2025-01-10",
+        "reward": {
+            "description": "Ruby x600",
+            "value": 600,
+            "type": "Ruby"
+        }
+    },
+    {
         "name": "SMSSELENE",
         "expiration": "2024-11-15",
         "reward": {
