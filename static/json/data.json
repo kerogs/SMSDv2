@@ -1,5 +1,23 @@
 [
     {
+        "name": "CROWNSAGA11",
+        "expiration": "2024-11-22",
+        "reward": {
+            "description": "Ruby x700",
+            "value": 700,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "QUIZSMSBD",
+        "expiration": "2024-12-10",
+        "reward": {
+            "description": "Stamina x1000",
+            "value": 1000,
+            "type": "Stamina"
+        }
+    },
+    {
         "name": "BOO4U2024",
         "expiration": "2025-01-10",
         "reward": {

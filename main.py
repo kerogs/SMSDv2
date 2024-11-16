@@ -51,8 +51,6 @@ def index():
                         if r == 0:
                             return render_template('error.html', type="ko", code="602", message="URL not supported or no url in <b>config.ini</b>", icon=ICONS_PACK['602'])
                         elif r == 1:
-                            # redirection to url "/"
-                            addnotification(title="data scraped")
                             return redirect("/")
                         elif r == 2:
                             return render_template('error.html', type="ko", code="603", message="Distant server connexion error.", icon=ICONS_PACK['603'])
@@ -65,18 +63,19 @@ def index():
                                 return render_template('error.html', type="ko", code="602", message="URL not supported or no url in <b>config.ini</b>", icon=ICONS_PACK['602'])
                             elif r == 1:
                                 # redirection to url "/"
-                                addnotification(title="data scraped")
                                 return redirect("/")
                             elif r == 2:
                                 return render_template('error.html', type="ko", code="603", message="Distant server connexion error.", icon=ICONS_PACK['603'])
                 
         
-        return render_template('index.html', data=json.loads(open("static/json/data.json", "r").read()))
+        return render_template('index.html', data=json.loads(open("static/json/data.json", "r").read()), notifications=json.loads(open("static/json/notification.json", "r").read()))
     else: 
         return render_template('error.html', type="ko", code="601", message="JSON file not found at <b>static/json/data.json</b>", icon=ICONS_PACK['601'], button_name="Initialisation", button_link="/init")
 
 @app.route('/init')
 def init():
+    addnotification(type="ako", title="data initialization", text="Data initialization was launched on this date.")
+    
     if(os.path.isfile("static/json/data.json")):
         return render_template('index.html')
     else:
@@ -92,6 +91,10 @@ def init():
             return redirect("/")
         elif r == 2:
             return render_template('error.html', type="ko", code="603", message="Distant server connexion error.", icon=ICONS_PACK['603'])
+
+@app.route('/notifications')
+def notifications():
+    return render_template('notifications.html', last_scrap=json.loads(open("static/json/website.json", "r").read())['scrap'], notifications=json.loads(open("static/json/notification.json", "r").read()))
 
 if __name__ == '__main__':
     print(f'{Fore.GREEN}[+] Configured port: {CONFIG_PORT}{Fore.RESET}')

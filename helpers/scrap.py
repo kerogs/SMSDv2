@@ -3,6 +3,7 @@ import re
 import json
 from colorama import Fore, init
 from datetime import datetime
+from helpers.notification import addnotification
 
 init(autoreset=True)
 
@@ -109,12 +110,16 @@ def scrap(user_agent: str, url: str) -> int:
             )
             
             saveDateScrap("ok")
+            
+            addnotification("ok", "DATA SCRAPING Success", "Success action")
             return 1  # Succès
         else:
             print(f"{Fore.RED}[-] Error: {response.status_code}")
             saveDateScrap("ko - " + str(response.status_code), "Error: " + str(response.status_code))
+            addnotification("ko", "DATA SCRAPING Error", "Error: " + str(response.status_code))
             return 2  # Erreur de requête
     else:
         print(f'[{Fore.RED}[-] Error: URL not supported : "{url}"')
         saveDateScrap("ko - " + str(response.status_code), "Error: Url not supported:" + str(response.status_code))
+        addnotification("ko", "DATA SCRAPING Error", f"Url not supported, check config.ini : ({response.status_code}) - ({url})")
         return 0  # URL non supportée

@@ -146,13 +146,34 @@ main .right_box {
   height: 400px;
 }
 
+.right_box a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .totalNumber {
-  background-color: rgba(158, 184, 245, 0.1);
+  background-color: #2d2f4c;
   padding: 10px 0;
   text-align: center;
   border-radius: 10px;
   font-size: 2em;
   font-weight: 800;
+}
+
+.notification {
+  background-color: #1a1b2c;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 2em;
+  font-weight: 800;
+  margin-top: 20px;
+}
+.notification.yes {
+  background-color: #40426c;
+}
+.notification:hover {
+  opacity: 0.9;
 }
 
 .btnlist {
@@ -190,4 +211,108 @@ main .right_box {
 }
 .btnlist > div:hover {
   opacity: 0.6;
+}
+
+.header_notifications {
+  display: flex;
+  gap: 20px;
+}
+.header_notifications .return {
+  background-color: rgb(158, 184, 245);
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  width: 90px;
+}
+.header_notifications .return svg {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.header_notifications .return a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.header_notifications .return:hover {
+  opacity: 0.6;
+}
+.header_notifications .scrap_box {
+  background-color: #1a1b2c;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+  flex: 1;
+}
+.header_notifications .scrap_box.ok {
+  background-color: #2da180;
+}
+.header_notifications .scrap_box.ko {
+  background-color: rgb(242, 154, 156);
+}
+.header_notifications .scrap_box .left svg {
+  width: 50px;
+  height: 50px;
+}
+.header_notifications .scrap_box details {
+  background-color: rgba(26, 27, 44, 0.8);
+  padding: 10px;
+  border: 10px;
+  border-radius: 10px;
+  transition: 0.4s;
+  margin-top: 5px;
+}
+.header_notifications .scrap_box details summary {
+  cursor: pointer;
+}
+.header_notifications .scrap_box details p {
+  padding-top: 10px;
+}
+.header_notifications .scrap_box details p span {
+  color: rgb(242, 154, 156);
+}
+
+.notifications_list {
+  margin-top: 20px;
+}
+.notifications_list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  -moz-columns: 2;
+       columns: 2;
+}
+.notifications_list ul li {
+  background-color: #1a1b2c;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.notifications_list ul li.ok:hover {
+  background-color: rgba(45, 161, 128, 0.2);
+}
+.notifications_list ul li.ko:hover {
+  background-color: rgba(242, 154, 156, 0.2);
+}
+.notifications_list ul li.ako:hover {
+  background-color: rgba(236, 210, 58, 0.2);
+}
+.notifications_list ul li .left svg {
+  width: 50px;
+  height: 50px;
+}
+.notifications_list ul li .right h3 span {
+  font-size: 12px;
+  color: #b3b3b3;
 }/*# sourceMappingURL=style.css.map */
