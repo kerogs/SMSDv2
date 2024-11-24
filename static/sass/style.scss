@@ -1,15 +1,12 @@
 // Summer Theme
-$background: #1a1b2c;
-$primary: rgb(158, 184, 245);
-$bck: rgb(109, 125, 165);
-$primaryGradient: linear-gradient(-280deg, #9cb6f5 1.5%, #dde3fa 91.6%);
-$secondary: #9ea3c1;
+$background: #202538;
+$primary: #5865f2;
 $text: #fff;
-$red: rgb(242, 154, 156);
-$green: #2da180;
-$orange: #fbb693;
-$purple: rgb(138, 54, 206);
-$yellow: rgb(236, 210, 58);
+$red: #c53c6a;
+$green: #22c55e;
+$orange: #fd7e14;
+$purple: #8c68ce;
+$yellow: #faca15;
 
 * {
     margin: 0;
@@ -29,8 +26,8 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 98vw;
-    height: 96vh;
+    width: 99vw;
+    height: 97vh;
 
     display: flex;
     gap: 10px;
@@ -190,7 +187,7 @@ main {
     padding: 20px;
 
     canvas {
-        height: 400px;
+        height: 300px;
     }
 }
 
@@ -275,7 +272,7 @@ main {
     display: flex;
     gap: 20px;
 
-    .return{
+    .return {
         background-color: $primary;
         padding: 20px;
         border-radius: 20px;
@@ -293,7 +290,7 @@ main {
             transform: translate(-50%, -50%);
         }
 
-        a{
+        a {
             position: absolute;
             top: 0;
             left: 0;
@@ -302,7 +299,7 @@ main {
             z-index: 2;
         }
 
-        &:hover{
+        &:hover {
             opacity: .6;
         }
     }
@@ -317,11 +314,11 @@ main {
         align-items: center;
         flex: 1;
 
-        &.ok{
+        &.ok {
             background-color: $green;
         }
 
-        &.ko{
+        &.ko {
             background-color: $red;
         }
 
@@ -333,7 +330,7 @@ main {
             }
         }
 
-        details{
+        details {
             background-color: transparentize($background, .2);
             padding: 10px;
             border: 10px;
@@ -341,14 +338,14 @@ main {
             transition: .4s;
             margin-top: 5px;
 
-            summary{
+            summary {
                 cursor: pointer;
             }
 
-            p{
+            p {
                 padding-top: 10px;
 
-                span{
+                span {
                     color: $red;
                 }
             }
@@ -356,17 +353,18 @@ main {
     }
 }
 
-.notifications_list{
+.notifications_list {
     margin-top: 20px;
 
-    ul{
+    ul {
         list-style: none;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
 
         columns: 2;
-        li{
+
+        li {
             background-color: $background;
             padding: 10px;
             border-radius: 10px;
@@ -375,35 +373,308 @@ main {
             gap: 10px;
             align-items: center;
 
-            &.ok:hover{
+            &.ok:hover {
                 background-color: transparentize($green, .8);
                 // background-color: $green;
             }
 
-            &.ko:hover{
+            &.ko:hover {
                 background-color: transparentize($red, .8);
                 // background-color: $red;
             }
 
-            &.ako:hover{
+            &.ako:hover {
                 background-color: transparentize($yellow, .8);
                 // background-color: $yellow;
             }
 
-            .left{
-                svg{
+            .left {
+                svg {
                     $size: 50px;
                     width: $size;
                     height: $size;
                 }
             }
 
-            .right{
-                h3{
-                    span{
+            .right {
+                h3 {
+                    span {
                         font-size: 12px;
                         color: darken($text, 30%);
                     }
+                }
+            }
+        }
+    }
+}
+
+.titlee {
+    margin: 20px 20px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    svg {
+        $size: 28px;
+        width: $size;
+        height: $size;
+        fill: $text;
+
+        &.btn {
+            cursor: pointer;
+            transition: .2s;
+
+            &:hover,
+            &.active {
+                fill: $primary;
+            }
+
+            &.active {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+.allCoupons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+
+    >div {
+        background-color: $background;
+        border-radius: 20px;
+        transition: .4s;
+        position: relative;
+        overflow: hidden;
+
+        &.priority {
+            .ribbon-wrapper {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: -13px;
+                right: -13px;
+                overflow: hidden;
+                transform: scale(0.8);
+            }
+
+            .ribbon-content {
+                font-size: 12pt;
+                font-weight: bold;
+                color: $text;
+                text-align: center;
+                padding: 2px 0;
+                transform: rotate(45deg);
+                width: 130px;
+                position: relative;
+                top: 15px;
+                left: 1px;
+                box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+                display: flex;
+                gap: 3px;
+                justify-content: center;
+                padding-left: 10px;
+
+                svg {
+                    $size: 20px;
+                    width: $size;
+                    height: $size;
+                }
+            }
+
+        }
+
+
+        // default
+        background: linear-gradient(to bottom left, $purple, $background 40%, $background);
+
+        .ribbon-content:after,
+        .ribbon-content:before,
+        .ribbon-content {
+            background-color: $purple;
+        }
+
+        &:hover {
+            box-shadow: 0 0 10px $purple;
+        }
+
+
+        &.ruby {
+            background: linear-gradient(to bottom left, $red, $background 40%, $background);
+
+            .ribbon-content:after,
+            .ribbon-content:before,
+            .ribbon-content {
+                background-color: $red;
+            }
+
+
+
+            &:hover {
+                box-shadow: 0 0 10px $red;
+            }
+
+        }
+
+        &.stamina {
+            background: linear-gradient(to bottom left, $yellow, $background 40%, $background);
+
+            .ribbon-content:after,
+            .ribbon-content:before,
+            .ribbon-content {
+                background-color: $yellow;
+            }
+
+            &:hover {
+                box-shadow: 0 0 10px $yellow;
+            }
+
+        }
+
+        .inner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: $background;
+            margin: 1px;
+            border-radius: 20px;
+            padding: 13px;
+
+            .left {
+                svg {
+                    $size: 40px;
+                    width: $size;
+                    height: $size;
+
+                    fill: $primary;
+
+                    &.ruby {
+                        fill: $red;
+                    }
+
+                    &.stamina {
+                        fill: $yellow;
+                    }
+
+                    &.special {
+                        fill: $purple;
+                    }
+                }
+            }
+
+            .right {
+                p.code {
+                    font-weight: 900;
+                    font-size: 18px;
+                }
+
+                p.reward {
+                    font-size: 12px;
+                    color: darken($text, 30%);
+                }
+            }
+        }
+
+
+    }
+}
+
+.clickToCopy {
+    cursor: pointer;
+}
+
+.TopTier {
+    display: flex;
+    align-items: center;
+
+    .left {
+        height: 400px;
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        gap: 30px;
+
+        >div {
+            flex: 1;
+            position: relative;
+            border-radius: 40px;
+
+            &.one {
+                height: calc(100% / 1);
+            }
+
+            &.two {
+                height: calc(100% / 1.5);
+            }
+
+            &.three {
+                height: calc(100% / 2);
+            }
+
+            background-color: $primary;
+
+            // &.ruby {
+            //     background-color: $red;
+            // }
+
+            // &.stamina {
+            //     background-color: $yellow;
+            // }
+
+            // &.special {
+            //     background-color: $purple;
+            // }
+            
+            &:hover{
+                opacity: .4;
+            }
+
+
+
+            >div {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+
+                p.name {
+                    font-size: 30px;
+                    font-weight: 900;
+                }
+
+                svg {
+
+                    $size : 60px;
+                    width: $size;
+                    height: $size;
+                    fill: $text;
+                }
+
+                p.reward {
+
+                    font-size: 20px;
+                    font-weight: 900;
                 }
             }
         }

@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #1a1b2c;
+  background-color: #202538;
   color: #fff;
   font-family: "Inter", sans-serif;
 }
@@ -16,21 +16,21 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 98vw;
-  height: 96vh;
+  width: 99vw;
+  height: 97vh;
   display: flex;
   gap: 10px;
 }
 main .left_box {
   flex: 1;
-  background-color: #11111c;
+  background-color: #171a28;
   border-radius: 20px;
   padding: 20px;
   overflow: auto;
 }
 main .right_box {
   width: 360px;
-  background-color: #11111c;
+  background-color: #171a28;
   border-radius: 20px;
   padding: 20px;
   overflow: auto;
@@ -52,44 +52,44 @@ main .right_box {
   cursor: pointer;
 }
 .total > div#allNav {
-  border: 1px solid rgb(158, 184, 245);
+  border: 1px solid #5865f2;
 }
 .total > div#allNav.active {
-  box-shadow: 0 0 10px rgb(158, 184, 245);
-  background-color: rgba(158, 184, 245, 0.1);
+  box-shadow: 0 0 10px #5865f2;
+  background-color: rgba(88, 101, 242, 0.1);
 }
 .total > div#allNav:hover {
-  background-color: rgba(158, 184, 245, 0.1);
+  background-color: rgba(88, 101, 242, 0.1);
 }
 .total > div#rubyNav {
-  border: 1px solid rgb(242, 154, 156);
+  border: 1px solid #c53c6a;
 }
 .total > div#rubyNav.active {
-  box-shadow: 0 0 10px rgb(242, 154, 156);
-  background-color: rgba(242, 154, 156, 0.1);
+  box-shadow: 0 0 10px #c53c6a;
+  background-color: rgba(197, 60, 106, 0.1);
 }
 .total > div#rubyNav:hover {
-  background-color: rgba(242, 154, 156, 0.1);
+  background-color: rgba(197, 60, 106, 0.1);
 }
 .total > div#staminaNav {
-  border: 1px solid rgb(236, 210, 58);
+  border: 1px solid #faca15;
 }
 .total > div#staminaNav.active {
-  box-shadow: 0 0 10px rgb(236, 210, 58);
-  background-color: rgba(236, 210, 58, 0.1);
+  box-shadow: 0 0 10px #faca15;
+  background-color: rgba(250, 202, 21, 0.1);
 }
 .total > div#staminaNav:hover {
-  background-color: rgba(236, 210, 58, 0.1);
+  background-color: rgba(250, 202, 21, 0.1);
 }
 .total > div#specialNav {
-  border: 1px solid rgb(138, 54, 206);
+  border: 1px solid #8c68ce;
 }
 .total > div#specialNav.active {
-  box-shadow: 0 0 10px rgb(138, 54, 206);
-  background-color: rgba(138, 54, 206, 0.1);
+  box-shadow: 0 0 10px #8c68ce;
+  background-color: rgba(140, 104, 206, 0.1);
 }
 .total > div#specialNav:hover {
-  background-color: rgba(138, 54, 206, 0.1);
+  background-color: rgba(140, 104, 206, 0.1);
 }
 .total > div > div {
   flex: 1;
@@ -124,26 +124,26 @@ main .right_box {
   height: 60px;
 }
 .total > div .right svg.allNav {
-  fill: rgb(158, 184, 245);
+  fill: #5865f2;
 }
 .total > div .right svg.ruby {
-  fill: rgb(242, 154, 156);
+  fill: #c53c6a;
 }
 .total > div .right svg.stamina {
-  fill: rgb(236, 210, 58);
+  fill: #faca15;
 }
 .total > div .right svg.special {
-  fill: rgb(138, 54, 206);
+  fill: #8c68ce;
 }
 
 .graph {
   margin-top: 20px;
-  border: 1px solid rgb(158, 184, 245);
+  border: 1px solid #5865f2;
   border-radius: 20px;
   padding: 20px;
 }
 .graph canvas {
-  height: 400px;
+  height: 300px;
 }
 
 .right_box a {
@@ -152,7 +152,7 @@ main .right_box {
 }
 
 .totalNumber {
-  background-color: #2d2f4c;
+  background-color: #333a58;
   padding: 10px 0;
   text-align: center;
   border-radius: 10px;
@@ -161,7 +161,7 @@ main .right_box {
 }
 
 .notification {
-  background-color: #1a1b2c;
+  background-color: #202538;
   padding: 10px 0;
   text-align: center;
   border-radius: 10px;
@@ -170,7 +170,7 @@ main .right_box {
   margin-top: 20px;
 }
 .notification.yes {
-  background-color: #40426c;
+  background-color: #455079;
 }
 .notification:hover {
   opacity: 0.9;
@@ -184,7 +184,7 @@ main .right_box {
 }
 .btnlist > div {
   height: 100px;
-  background-color: #1a1b2c;
+  background-color: #202538;
   border-radius: 20px;
   position: relative;
 }
@@ -218,7 +218,7 @@ main .right_box {
   gap: 20px;
 }
 .header_notifications .return {
-  background-color: rgb(158, 184, 245);
+  background-color: #5865f2;
   padding: 20px;
   border-radius: 20px;
   position: relative;
@@ -244,7 +244,7 @@ main .right_box {
   opacity: 0.6;
 }
 .header_notifications .scrap_box {
-  background-color: #1a1b2c;
+  background-color: #202538;
   display: flex;
   gap: 20px;
   padding: 20px;
@@ -253,17 +253,17 @@ main .right_box {
   flex: 1;
 }
 .header_notifications .scrap_box.ok {
-  background-color: #2da180;
+  background-color: #22c55e;
 }
 .header_notifications .scrap_box.ko {
-  background-color: rgb(242, 154, 156);
+  background-color: #c53c6a;
 }
 .header_notifications .scrap_box .left svg {
   width: 50px;
   height: 50px;
 }
 .header_notifications .scrap_box details {
-  background-color: rgba(26, 27, 44, 0.8);
+  background-color: rgba(32, 37, 56, 0.8);
   padding: 10px;
   border: 10px;
   border-radius: 10px;
@@ -277,7 +277,7 @@ main .right_box {
   padding-top: 10px;
 }
 .header_notifications .scrap_box details p span {
-  color: rgb(242, 154, 156);
+  color: #c53c6a;
 }
 
 .notifications_list {
@@ -292,7 +292,7 @@ main .right_box {
        columns: 2;
 }
 .notifications_list ul li {
-  background-color: #1a1b2c;
+  background-color: #202538;
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -300,13 +300,13 @@ main .right_box {
   align-items: center;
 }
 .notifications_list ul li.ok:hover {
-  background-color: rgba(45, 161, 128, 0.2);
+  background-color: rgba(34, 197, 94, 0.2);
 }
 .notifications_list ul li.ko:hover {
-  background-color: rgba(242, 154, 156, 0.2);
+  background-color: rgba(197, 60, 106, 0.2);
 }
 .notifications_list ul li.ako:hover {
-  background-color: rgba(236, 210, 58, 0.2);
+  background-color: rgba(250, 202, 21, 0.2);
 }
 .notifications_list ul li .left svg {
   width: 50px;
@@ -315,4 +315,201 @@ main .right_box {
 .notifications_list ul li .right h3 span {
   font-size: 12px;
   color: #b3b3b3;
+}
+
+.titlee {
+  margin: 20px 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.titlee h2 {
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.titlee div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.titlee svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+}
+.titlee svg.btn {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.titlee svg.btn:hover, .titlee svg.btn.active {
+  fill: #5865f2;
+}
+.titlee svg.btn.active {
+  transform: scale(1.2);
+}
+
+.allCoupons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+.allCoupons > div {
+  background-color: #202538;
+  border-radius: 20px;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom left, #8c68ce, #202538 40%, #202538);
+}
+.allCoupons > div.priority .ribbon-wrapper {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  overflow: hidden;
+  transform: scale(0.8);
+}
+.allCoupons > div.priority .ribbon-content {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 2px 0;
+  transform: rotate(45deg);
+  width: 130px;
+  position: relative;
+  top: 15px;
+  left: 1px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  padding-left: 10px;
+}
+.allCoupons > div.priority .ribbon-content svg {
+  width: 20px;
+  height: 20px;
+}
+.allCoupons > div .ribbon-content:after,
+.allCoupons > div .ribbon-content:before,
+.allCoupons > div .ribbon-content {
+  background-color: #8c68ce;
+}
+.allCoupons > div:hover {
+  box-shadow: 0 0 10px #8c68ce;
+}
+.allCoupons > div.ruby {
+  background: linear-gradient(to bottom left, #c53c6a, #202538 40%, #202538);
+}
+.allCoupons > div.ruby .ribbon-content:after,
+.allCoupons > div.ruby .ribbon-content:before,
+.allCoupons > div.ruby .ribbon-content {
+  background-color: #c53c6a;
+}
+.allCoupons > div.ruby:hover {
+  box-shadow: 0 0 10px #c53c6a;
+}
+.allCoupons > div.stamina {
+  background: linear-gradient(to bottom left, #faca15, #202538 40%, #202538);
+}
+.allCoupons > div.stamina .ribbon-content:after,
+.allCoupons > div.stamina .ribbon-content:before,
+.allCoupons > div.stamina .ribbon-content {
+  background-color: #faca15;
+}
+.allCoupons > div.stamina:hover {
+  box-shadow: 0 0 10px #faca15;
+}
+.allCoupons > div .inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #202538;
+  margin: 1px;
+  border-radius: 20px;
+  padding: 13px;
+}
+.allCoupons > div .inner .left svg {
+  width: 40px;
+  height: 40px;
+  fill: #5865f2;
+}
+.allCoupons > div .inner .left svg.ruby {
+  fill: #c53c6a;
+}
+.allCoupons > div .inner .left svg.stamina {
+  fill: #faca15;
+}
+.allCoupons > div .inner .left svg.special {
+  fill: #8c68ce;
+}
+.allCoupons > div .inner .right p.code {
+  font-weight: 900;
+  font-size: 18px;
+}
+.allCoupons > div .inner .right p.reward {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+
+.clickToCopy {
+  cursor: pointer;
+}
+
+.TopTier {
+  display: flex;
+  align-items: center;
+}
+.TopTier .left {
+  height: 400px;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+}
+.TopTier .left > div {
+  flex: 1;
+  position: relative;
+  border-radius: 40px;
+  background-color: #5865f2;
+}
+.TopTier .left > div.one {
+  height: 100%;
+}
+.TopTier .left > div.two {
+  height: 66.6666666667%;
+}
+.TopTier .left > div.three {
+  height: 50%;
+}
+.TopTier .left > div:hover {
+  opacity: 0.4;
+}
+.TopTier .left > div > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.TopTier .left > div > div p.name {
+  font-size: 30px;
+  font-weight: 900;
+}
+.TopTier .left > div > div svg {
+  width: 60px;
+  height: 60px;
+  fill: #fff;
+}
+.TopTier .left > div > div p.reward {
+  font-size: 20px;
+  font-weight: 900;
 }/*# sourceMappingURL=style.css.map */
