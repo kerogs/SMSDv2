@@ -473,6 +473,16 @@
     </main>
 
 </body>
+
+<script>
+    // Fonction utilitaire pour vérifier les dates
+    let isCouponValid = (expirationDate) => {
+        const today = new Date();
+        const expiration = new Date(expirationDate);
+        return expiration >= today; // True si la date d'expiration n'est pas dépassée
+    };
+</script>
+
 <script>
     let AllCoupons = '{{data | tojson | safe}}';
     AllCoupons = JSON.parse(AllCoupons);
@@ -667,23 +677,26 @@
                 break;
         }
 
-        allCoupons.innerHTML += `
+        if (isCouponValid(coupon['expiration'])) {
+            allCoupons.innerHTML += `
         
-                <div class="`+ couponType + ` clickToCopy priority" data-category="` + couponType + `">
-                    `+ priorityShow + `
-                    <div class="inner">
-                        <div class="left">
-                            `+ svg + `
-                        </div>
-                        <div class="right">
-                            <p class="code">`+ coupon['name'] + `</p>
-                            <p class="reward"><i>`+ value + `x ` + reward + `</i></p>
+                    <div title="Expiration : `+ coupon['expiration'] + ` (AAAA/MM/DD)" class="` + couponType + ` clickToCopy priority" data-priority="` + priorityLevel + `"  data-category="` + couponType + `" data-clipboardType="allCouponsArea">
+                        `+ priorityShow + `
+                        <div class="inner">
+                            <div class="left">
+                                `+ svg + `
+                            </div>
+                            <div class="right">
+                                <p class="code">`+ coupon['name'] + `</p>
+                                <p class="reward"><i>`+ value + `x ` + reward + `</i></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-        `;
+            
+            `;
+        } else {
+        }
     });
 
 
@@ -704,13 +717,6 @@
 
     const showTopRuby = document.querySelector("#showTopRuby");
     const showTopStamina = document.querySelector("#showTopStamina");
-
-    // Fonction utilitaire pour vérifier les dates
-    const isCouponValid = (expirationDate) => {
-        const today = new Date();
-        const expiration = new Date(expirationDate);
-        return expiration >= today; // True si la date d'expiration n'est pas dépassée
-    };
 
     // Filtrer et trier les coupons Ruby valides
     const topThreeRubyCoupons = AllCoupons
@@ -893,5 +899,71 @@
         specialNav.classList.add("active");
     })
 </script>
+
+<script>
+    document.querySelectorAll(".clickToCopy").forEach(element => {
+        element.addEventListener("click", async () => {
+            let codeToCopy = "";
+            const type = element.dataset.clipboardType;
+
+            // Récupération du texte à copier
+            try {
+                const codeElement = element.querySelector("p.code");
+                if (!codeElement) {
+                    console.error(`Aucun élément <p class="code"> trouvé pour type : ${type}`);
+                    return;
+                }
+                codeToCopy = codeElement.textContent.trim();
+                if (!codeToCopy) {
+                    console.error(`Aucun contenu à copier pour type : ${type}`);
+                    return;
+                }
+                console.log(`Code à copier : ${codeToCopy}`);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du code :", error);
+                return;
+            }
+
+            // Copie dans le presse-papiers avec fallback
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(codeToCopy);
+                    console.log("Texte copié dans le presse-papiers !");
+                } else {
+                    // Fallback : utilisation d'un élément temporaire
+                    const tempInput = document.createElement("textarea");
+                    tempInput.value = codeToCopy;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(tempInput);
+                    console.log("Texte copié via fallback !");
+                }
+            } catch (err) {
+                console.error("Échec de la copie du texte :", err);
+                return;
+            }
+
+            // Ajout de la classe "copied" pendant 3 secondes
+            element.classList.add("copied");
+
+            // Envoi du code à une API
+            try {
+                const response = await fetch(`/act/copy/${encodeURIComponent(codeToCopy)}`, {
+                    method: 'GET',
+                });
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP : ${response.status}`);
+                }
+                const data = await response.json();
+                console.log("Réponse API :", data);
+            } catch (error) {
+                console.error("Erreur lors de l'envoi des données :", error);
+            }
+        });
+    });
+</script>
+
+
 
 </html>

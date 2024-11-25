@@ -364,6 +364,14 @@ main .right_box {
   overflow: hidden;
   background: linear-gradient(to bottom left, #8c68ce, #202538 40%, #202538);
 }
+.allCoupons > div.copied {
+  background: #22c55e !important;
+  opacity: 0.3;
+  transform: scale(0.9);
+}
+.allCoupons > div.copied .inner {
+  background: #22c55e !important;
+}
 .allCoupons > div.priority .ribbon-wrapper {
   width: 100px;
   height: 100px;

@@ -96,6 +96,10 @@ def init():
 def notifications():
     return render_template('notifications.html', last_scrap=json.loads(open("static/json/website.json", "r").read())['scrap'], notifications=json.loads(open("static/json/notification.json", "r").read()))
 
+@app.route('/act/copy/<code>')
+def copy(code):
+    return "OK"
+
 if __name__ == '__main__':
     print(f'{Fore.GREEN}[+] Configured port: {CONFIG_PORT}{Fore.RESET}')
     print(f'{Fore.GREEN}[+] Configured host set on {config["server"]["allow_local_network"]} -> {CONFIG_HOST}{Fore.RESET}')

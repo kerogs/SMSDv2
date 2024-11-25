@@ -462,6 +462,16 @@ main {
         position: relative;
         overflow: hidden;
 
+        &.copied{
+            background: $green !important;
+            opacity: .3;
+            transform: scale(.9);
+
+            .inner{
+                background: $green !important;
+            }
+        }
+
         &.priority {
             .ribbon-wrapper {
                 width: 100px;
