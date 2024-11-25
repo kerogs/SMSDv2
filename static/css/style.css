@@ -456,7 +456,7 @@ main .right_box {
 .allCoupons > div .inner .left svg.special {
   fill: #8c68ce;
 }
-.allCoupons > div .inner .right p.code {
+.allCoupons > div .inner .right p.name {
   font-weight: 900;
   font-size: 18px;
 }

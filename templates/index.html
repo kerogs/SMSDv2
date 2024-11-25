@@ -316,7 +316,7 @@
             </div>
             <div class="TopTier">
                 <div class="left">
-                    <div id="topTierTwo" class="two stamina clickToCopy">
+                    <div id="topTierTwo" class="two stamina clickToCopy" data-clipboardType="allCouponsArea">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -327,11 +327,11 @@
                                         d="M10.5 13.118c.08-.785.608-1.118 1.158-1.118h.666c.55 0 1.077.333 1.157 1.118a4 4 0 0 1 0 .764c-.049.478-.627 1.027-.627 1.027L12 15.5s-1.5 1-1.5 2c0 .54.437.5.977.5h2.004m.079-16L11 7.898M18 2l-2.821 6.5M10.44 2L12 5.594M6 2l2.821 6.5" />
                                 </g>
                             </svg>
-                            <p class="name"></p>
-                            <p class="reward"></p>
+                            <p class="name">...</p>
+                            <p class="reward">5000x Ruby</p>
                         </div>
                     </div>
-                    <div id="topTierOne" class="one ruby clickToCopy">
+                    <div id="topTierOne" class="one ruby clickToCopy" data-clipboardType="allCouponsArea">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
@@ -340,11 +340,11 @@
                                     d="M16.377 2.347A26.4 26.4 0 0 0 12 2c-1.783 0-3.253.157-4.377.347c-1.139.192-1.708.288-2.184.874c-.475.586-.45 1.219-.4 2.485c.173 4.348 1.111 9.78 6.211 10.26V19.5H9.82a1 1 0 0 0-.98.804l-.19.946H6a.75.75 0 0 0 0 1.5h12a.75.75 0 0 0 0-1.5h-2.65l-.19-.946a1 1 0 0 0-.98-.804h-1.43v-3.534c5.1-.48 6.039-5.911 6.211-10.26c.05-1.266.076-1.9-.4-2.485c-.476-.586-1.045-.682-2.184-.874m-3.59 3.46a.75.75 0 0 1 .463.693v4a.75.75 0 0 1-1.5 0V8.31l-.22.22a.75.75 0 1 1-1.06-1.06l1.5-1.5a.75.75 0 0 1 .817-.163"
                                     clip-rule="evenodd" />
                             </svg>
-                            <p class="name">TOPGOOGLESMS</p>
+                            <p class="name">...</p>
                             <p class="reward">1000x Ruby</p>
                         </div>
                     </div>
-                    <div id="topTierThree" class="three special clickToCopy">
+                    <div id="topTierThree" class="three special clickToCopy" data-clipboardType="allCouponsArea">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -355,7 +355,7 @@
                                         d="M10.5 13.118c.08-.785.607-1.118 1.158-1.118h.666c.55 0 1.077.333 1.157 1.118a4 4 0 0 1 0 .764c-.066.648-.51 1.118-.99 1.118M10.5 16.882c.08.785.607 1.118 1.158 1.118h.666c.55 0 1.077-.333 1.157-1.118a4 4 0 0 0 0-.764c-.066-.648-.51-1.118-.99-1.118m0 0h-.06M13.56 2L11 7.898M18 2l-2.821 6.5M10.44 2L12 5.594M6 2l2.821 6.5" />
                                 </g>
                             </svg>
-                            <p class="name">TOPGOOGLESMS</p>
+                            <p class="name">...</p>
                             <p class="reward">1000x Stamina</p>
                         </div>
                     </div>
@@ -687,7 +687,7 @@
                                 `+ svg + `
                             </div>
                             <div class="right">
-                                <p class="code">`+ coupon['name'] + `</p>
+                                <p class="name">`+ coupon['name'] + `</p>
                                 <p class="reward"><i>`+ value + `x ` + reward + `</i></p>
                             </div>
                         </div>
@@ -905,10 +905,12 @@
         element.addEventListener("click", async () => {
             let codeToCopy = "";
             const type = element.dataset.clipboardType;
+            
 
             // Récupération du texte à copier
             try {
-                const codeElement = element.querySelector("p.code");
+                const codeElement = element.querySelector("p.name");
+                console.log(codeElement);
                 if (!codeElement) {
                     console.error(`Aucun élément <p class="code"> trouvé pour type : ${type}`);
                     return;
