@@ -164,6 +164,7 @@ cython_debug/
 # SMSDv2
 static/json/notification.json
 static/json/website.json
+static/json/data_claimed.json
 
 static/package-lock.json
 static/node_modules

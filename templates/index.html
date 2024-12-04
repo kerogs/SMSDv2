@@ -38,8 +38,8 @@
                 <div id="rubyNav">
                     <div class="left">
                         <p class="title">Ruby Value</p>
-                        <p class="price">17000 R</p>
-                        <p class="maxdate">18/02/2025</p>
+                        <p id="totalRubyValAfterClaim" class="price">...</p>
+                        <p id="totalRubyVal" class="maxdate">...</p>
                     </div>
                     <div class="right">
                         <svg class="ruby" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -52,8 +52,8 @@
                 <div id="staminaNav">
                     <div class="left">
                         <p class="title">Stamina Value</p>
-                        <p class="price">30000 STM</p>
-                        <p class="maxdate">15/11/2025</p>
+                        <p id="totalStaminaValAfterClaim" class="price">...</p>
+                        <p id="totalStaminaVal" class="maxdate">...</p>
                     </div>
                     <div class="right">
                         <svg class="stamina" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -66,8 +66,8 @@
                 <div id="specialNav">
                     <div class="left">
                         <p class="title">Special Item</p>
-                        <p class="price">6 objects</p>
-                        <p class="maxdate">24/12/2024</p>
+                        <p id="totalSpecialValAfterClaim" class="price">...</p>
+                        <p id="totalSpecialVal" class="maxdate">...</p>
                     </div>
                     <div class="right">
                         <svg class="special" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -487,6 +487,16 @@
     let AllCoupons = '{{data | tojson | safe}}';
     AllCoupons = JSON.parse(AllCoupons);
 
+    let ClaimedCoupons = '{{dataClaimed | tojson | safe}}';
+    ClaimedCoupons = JSON.parse(ClaimedCoupons);
+
+    let totalRubyVal = 0;
+    let totalRubyValAfterClaim = 0;
+    let totalStamVal = 0;
+    let totalStamValAfterClaim = 0;
+    let totalSpecial = 0;
+    let totalSpecialAfterClaim = 0;
+
     // count all and show it
     document.querySelector("#totalCoupons").innerHTML = AllCoupons.length;
 
@@ -502,6 +512,10 @@
 
         let couponType = coupon['reward']['type'].toLowerCase();
         // lowercase
+
+        let value = coupon['reward']['value'];
+        value === "" ? value = "?" : value = value;
+        value === "" ? valueInt = 0 : valueInt = value;
 
         // console.log(couponType);
 
@@ -571,9 +585,6 @@
                 priorityLevel = 3;
             }
         }
-
-        let value = coupon['reward']['value'];
-        value === "" ? value = "?" : value = value;
 
         let priorityShow = "";
         switch (priorityLevel) {
@@ -678,9 +689,55 @@
         }
 
         if (isCouponValid(coupon['expiration'])) {
+
+            switch (couponType) {
+                case "Ruby":
+                    totalRubyVal = valueInt + totalRubyVal;
+                    totalRubyValAfterClaim = valueInt + totalRubyValAfterClaim;
+                    console.log("totalRubyVal -> " + totalRubyVal);
+                    break;
+                case "Gold bar":
+                    totalStaminaVal = valueInt + totalStaminaVal;
+                    totalStaminaValAfterClaim = valueInt + totalStaminaValAfterClaim;
+                    console.log("totalStaminaVal -> " + totalStaminaVal);
+                    break;
+                default:
+                    totalSpecialVal = valueInt + totalSpecialVal;
+                    totalSpecialValAfterClaim = valueInt + totalSpecialValAfterClaim;
+                    console.log("totalSpecialVal -> " + totalSpecialVal);
+                    break;
+            }
+
+            // check if already claimed
+            let alreadyClaim = "";
+            if (ClaimedCoupons.includes(coupon['name'])) {
+                alreadyClaim = "claim";
+
+                switch (couponType) {
+                    case "Ruby":
+                        totalRubyValAfterClaim = valueInt - totalRubyValAfterClaim;
+                        console.log("coupon claim");
+                        break;
+                    case "Gold bar":
+                        totalStamValAfterClaim = valueInt - totalStamValAfterClaim;
+                        console.log("coupon claim");
+                        break;
+                    case "Special item":
+                        totalSpecialAfterClaim = valueInt - totalSpecialAfterClaim;
+                        console.log("coupon claim");
+                        break;
+                }
+
+                console.log("coupon claim -> remove value (" + valueInt + ")");
+            }
+
+            console.log("nouveau coupon -> ajout value (" + valueInt + " -> (" + totalRubyVal + ") -> (" + totalStamVal + ") -> (" + totalSpecial + ")");
+            console.log("Value -> " + value);
+            console.log("======================>");
+
             allCoupons.innerHTML += `
         
-                    <div title="Expiration : `+ coupon['expiration'] + ` (AAAA/MM/DD)" class="` + couponType + ` clickToCopy priority" data-priority="` + priorityLevel + `"  data-category="` + couponType + `" data-clipboardType="allCouponsArea">
+                    <div title="Expiration : `+ coupon['expiration'] + ` (AAAA/MM/DD)" class="` + couponType + ` ` + alreadyClaim + ` clickToCopy priority" data-priority="` + priorityLevel + `"  data-category="` + couponType + `" data-clipboardType="allCouponsArea">
                         `+ priorityShow + `
                         <div class="inner">
                             <div class="left">
@@ -699,13 +756,17 @@
         }
     });
 
+    // put value
+    document.querySelector("#totalRubyVal").innerHTML = totalRubyVal + " R";
+    document.querySelector("#totalRubyValAfterClaim").innerHTML = totalRubyValAfterClaim + " R";
+    document.querySelector("#totalStaminaVal").innerHTML = totalStaminaVal + " STM";
+    document.querySelector("#totalStaminaValAfterClaim").innerHTML = totalStaminaValAfterClaim + " STM";
+    document.querySelector("#totalSpecialVal").innerHTML = totalSpecialVal;
+    document.querySelector("#totalSpecialValAfterClaim").innerHTML = totalSpecialValAfterClaim;
 
-
-
-
-
-
-
+    console.log("totalRubyVal -> " + totalRubyVal);
+    console.log("totalRubyValAfterClaim -> " + totalRubyValAfterClaim);
+    console.log("totalStaminaVal -> " + totalStaminaVal);
 
 
 
@@ -777,6 +838,7 @@
         showTopRuby.classList.remove("active");
         showTopStamina.classList.add("active");
     });
+
 
 
 </script>
@@ -905,7 +967,7 @@
         element.addEventListener("click", async () => {
             let codeToCopy = "";
             const type = element.dataset.clipboardType;
-            
+
 
             // Récupération du texte à copier
             try {

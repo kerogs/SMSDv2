@@ -433,6 +433,9 @@ main .right_box {
 .allCoupons > div.stamina:hover {
   box-shadow: 0 0 10px #faca15;
 }
+.allCoupons > div.claim {
+  opacity: 0.3;
+}
 .allCoupons > div .inner {
   display: flex;
   align-items: center;

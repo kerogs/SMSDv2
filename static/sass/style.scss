@@ -558,6 +558,10 @@ main {
 
         }
 
+        &.claim{
+            opacity: .3;
+        }
+
         .inner {
             display: flex;
             align-items: center;

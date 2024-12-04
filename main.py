@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from configparser import ConfigParser
-import os, random, json
+import os, random, json, webbrowser
 from colorama import Fore, init
 from datetime import datetime
 from helpers.assets import ICONS_PACK, USER_AGENT_LIST
@@ -66,9 +66,16 @@ def index():
                                 return redirect("/")
                             elif r == 2:
                                 return render_template('error.html', type="ko", code="603", message="Distant server connexion error.", icon=ICONS_PACK['603'])
-                
+           
+           
+        # get data_claimed
+        if(os.path.isfile("static/json/data_claimed.json")):
+            with open("static/json/data_claimed.json", "r") as f:
+                dataClaimed = json.load(f)
+        else:
+            dataClaimed = []
         
-        return render_template('index.html', data=json.loads(open("static/json/data.json", "r").read()), notifications=json.loads(open("static/json/notification.json", "r").read()))
+        return render_template('index.html', data=json.loads(open("static/json/data.json", "r").read()), dataClaimed=dataClaimed, notifications=json.loads(open("static/json/notification.json", "r").read()))
     else: 
         return render_template('error.html', type="ko", code="601", message="JSON file not found at <b>static/json/data.json</b>", icon=ICONS_PACK['601'], button_name="Initialisation", button_link="/init")
 
@@ -98,10 +105,25 @@ def notifications():
 
 @app.route('/act/copy/<code>')
 def copy(code):
+
+    # check if file exist
+    if not os.path.isfile("static/json/data_claimed.json"):
+        with(open("static/json/data_claimed.json", "w")) as f:
+            f.write("[]")
+            print(f'{Fore.GREEN}[+] Data file created.')
+            
+    # add code to data_claimed.json
+    with open("static/json/data_claimed.json", "r") as f:
+        data = json.load(f)
+        data.append(code)
+        with open("static/json/data_claimed.json", "w") as f:
+            f.write(json.dumps(data))
+            
     return "OK"
 
 if __name__ == '__main__':
     print(f'{Fore.GREEN}[+] Configured port: {CONFIG_PORT}{Fore.RESET}')
     print(f'{Fore.GREEN}[+] Configured host set on {config["server"]["allow_local_network"]} -> {CONFIG_HOST}{Fore.RESET}')
     print(f'{Fore.GREEN}[+] Configured debug mode: {CONFIG_DEBUG}{Fore.RESET}')
+    # webbrowser.open(f"http://127.0.0.1:{CONFIG_PORT}")
     app.run(debug=CONFIG_DEBUG, host='0.0.0.0', port=5113)

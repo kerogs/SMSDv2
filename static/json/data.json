@@ -1,5 +1,68 @@
 [
     {
+        "name": "SOONSEAH",
+        "expiration": "2024-12-23",
+        "reward": {
+            "description": "Ruby x500",
+            "value": 500,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "GODISSUE12",
+        "expiration": "2024-12-10",
+        "reward": {
+            "description": "Ruby x200",
+            "value": 200,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "GODISSUE",
+        "expiration": "2024-12-10",
+        "reward": {
+            "description": "Stamina x5000",
+            "value": 5000,
+            "type": "Stamina"
+        }
+    },
+    {
+        "name": "NOVLEVELING",
+        "expiration": "2024-12-06",
+        "reward": {
+            "description": "Ruby x700",
+            "value": 700,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "YURA11UPDATE",
+        "expiration": "2024-12-23",
+        "reward": {
+            "description": "Ruby x800",
+            "value": 800,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "SNAKE2411",
+        "expiration": "2024-12-20",
+        "reward": {
+            "description": "Ruby x500",
+            "value": 500,
+            "type": "Ruby"
+        }
+    },
+    {
+        "name": "WEAPONTIP24",
+        "expiration": "2024-12-23",
+        "reward": {
+            "description": "Ruby x800",
+            "value": 800,
+            "type": "Ruby"
+        }
+    },
+    {
         "name": "NEWCROWN11",
         "expiration": "2024-11-29",
         "reward": {
