@@ -1,0 +1,319 @@
+/*
+ * HK13 Theme (v4.2.0)
+ * Theme by Keorgs
+ * https://github.com/kerogs
+ * 
+ * SCSS structure with light and dark mode support.
+ * Future-proof: Adaptive mode can be added later.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap");
+:root {
+  --background: #f5f5f5;
+  --cards: #e4e6e6;
+  --fg: #3a3a3a;
+  --sfg: #494949;
+  --accent: #fd4e2b;
+}
+
+.darktheme, body {
+  --background: #19171a;
+  --cards: #201e21;
+  --fg: #d8dee9;
+  --sfg: #2c292e;
+  --accent: #fd4e2b;
+}
+
+.lighttheme, body.lighttheme {
+  --background: #f5f5f5;
+  --cards: #e4e6e6;
+  --fg: #3a3a3a;
+  --sfg: #494949;
+  --accent: #fd4e2b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--fg);
+  font-family: "Atkinson Hyperlegible Mono", monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 98vw;
+  height: 97vh;
+  display: flex;
+  gap: 2.5vh;
+}
+body aside {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 70px;
+  height: 100%;
+  background-color: var(--cards);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+body aside img {
+  width: 100%;
+}
+body aside .center {
+  flex: 1;
+}
+body aside .bottom p.version {
+  text-align: center;
+  font-size: 12px;
+}
+body aside ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  text-align: center;
+}
+body aside ul a {
+  color: var(--fg);
+}
+body aside ul li {
+  width: 100%;
+  font-size: 22px;
+  padding: 22px 0;
+  position: relative;
+  border-radius: 10px;
+}
+body aside ul li ion-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body aside ul li:hover {
+  background-color: var(--background);
+}
+body aside ul li.active {
+  color: var(--accent);
+}
+body main {
+  flex-grow: 1;
+  height: 100%;
+  background-color: var(--cards);
+  padding: 10px;
+  border-radius: 15px;
+  overflow: auto;
+}
+
+.filterBtn {
+  text-align: right;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.filterBtn a {
+  text-decoration: none;
+}
+.filterBtn button {
+  border: 1px solid var(--fg);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--fg);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.filterBtn button:hover {
+  opacity: 0.5;
+}
+
+.profile {
+  padding: 60px;
+}
+.profile .profile-picture {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.profile .profile-picture button {
+  border: 1px solid var(--fg);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--fg);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.profile .profile-picture button:hover {
+  opacity: 0.5;
+}
+.profile .profile-picture button.active {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--background);
+}
+.profile .profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--fg);
+}
+.profile .newprofilePicture {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 30px 0;
+  border-radius: 20px;
+  padding: 50px;
+  background-color: var(--background);
+  justify-content: space-between;
+  max-height: 1200px;
+  overflow-y: auto;
+}
+.profile .newprofilePicture .radioGroup input {
+  display: none;
+}
+.profile .newprofilePicture .radioGroup input:checked + label img {
+  border: 2px solid var(--accent);
+  background-color: var(--cards);
+  box-shadow: 0 0 10px var(--accent);
+}
+.profile .newprofilePicture .radioGroup img {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+.profile .gridSep {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+.profile .gridSep > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.profile .inputgroup {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--fg);
+  display: inline-flex;
+  width: 100%;
+}
+.profile .inputgroup label {
+  padding: 6px 12px;
+  flex-shrink: 0;
+}
+.profile .inputgroup input {
+  background-color: var(--background);
+  border: none;
+  color: var(--fg);
+  padding: 9px 12px;
+  width: 100%;
+  outline: none;
+}
+.profile .inputgroup input[readonly] {
+  cursor: not-allowed;
+  background-color: var(--cards);
+}
+
+.notyf__toast {
+  border-radius: 15px 10px 10px 15px !important;
+}
+
+.connectedas b {
+  color: var(--accent);
+}
+
+.helpList {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 13px;
+}
+.helpList a {
+  text-decoration: none;
+  color: var(--fg);
+}
+.helpList__item {
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.helpList__item:hover {
+  background-color: var(--cards);
+  border-radius: 10px;
+}
+.helpList__item ion-icon {
+  transform: translateY(2px);
+}
+
+.searchHelpList {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+.searchHelpList .input {
+  width: 100%;
+  height: 45px;
+  padding: 9px;
+  border-radius: 12px;
+  background-color: var(--background);
+  border: 1.5px solid var(--background);
+  color: var(--fg);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.searchHelpList .input:hover {
+  border: 2px solid var(--background);
+}
+.searchHelpList .input:focus {
+  border: 2px solid var(--fg);
+}
+.searchHelpList select {
+  width: 100%;
+  height: 45px;
+  padding: 9px;
+  border-radius: 12px;
+  background-color: var(--background);
+  border: 1.5px solid var(--background);
+  color: var(--fg);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  margin-top: 10px;
+}
+
+.help_container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+.help_container .help_category {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 9px;
+  border-radius: 5px;
+  background-color: var(--background);
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=style.css.map */

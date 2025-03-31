@@ -1,0 +1,29 @@
+{
+    "0": {
+        "title": "How user account works",
+        "category": "Users",
+        "content": "A user is automatically created using its IP address. When you connect to the site for the first time with a new device, it will register a new user and attach the data to its ID.",
+        "recommend": [
+            "1",
+            "2"
+        ]
+    },
+    "1": {
+        "title": "How to synchronize data between users",
+        "category": "Users",
+        "content": "To synchronize data between users, simply do the following: <br> <ol> <li>Go to your profile page</li> <li>Go to the column to synchronize data with a user</li> <li>Write in the user id</li> </ol> <br> <br> if you don't know it, you can either go to the user's profile via the other device or search for it in the page that lists all users who have already logged on to the site by <a href='/users.php'>going to this page</a>",
+        "recommend": [
+            "0",
+            "2"
+        ]
+    },
+    "2": {
+        "title": "How coupons register works",
+        "category": "Coupons",
+        "content": "Registering a coupon couldn't be easier: simply click on the coupon code, and it will be automatically registered as collected.",
+        "recommend": [
+            "0",
+            "1"
+        ]
+    }
+}
