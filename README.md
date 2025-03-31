@@ -47,4 +47,10 @@ CREATE TABLE users (
     date TEXT NOT NULL
 )
 
+CREATE TABLE teams_stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ip TEXT NOT NULL,
+    squad_power TEXT NOT NULL,
+    squad_number TEXT NOT NULL
+)
 ```

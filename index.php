@@ -5,98 +5,10 @@ require_once __DIR__ . '/inc/core.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-try {
-    // Connexion à la base de données
-    $db = new SQLite3(__DIR__ . '/db/database.db');
-    if (!$db) {
-        throw new Exception("Impossible de se connecter à la base de données");
-    }
-
-    // Vérifier que la table existe
-    $tableCheck = $db->querySingle("SELECT 1 FROM sqlite_master WHERE type='table' AND name='coupons'");
-    if (!$tableCheck) {
-        throw new Exception("La table 'coupons' n'existe pas");
-    }
-
-    // Récupérer les 100 derniers coupons avec leur type
-    $query = "
-        SELECT 
-            strftime('%Y-%m-%d', date) as day,
-            type,
-            COUNT(*) as count
-        FROM coupons
-        GROUP BY day, type
-        ORDER BY day DESC, type
-        LIMIT 100
-    ";
-
-    $result = $db->query($query);
-    if (!$result) {
-        throw new Exception("Erreur dans la requête SQL: " . $db->lastErrorMsg());
-    }
-
-    $couponData = [];
-    $days = [];
-    $types = ['ruby' => 0, 'stamina' => 0, 'other' => 0];
-
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        $day = $row['day'];
-        $type = strtolower($row['type']);
-        $count = (int)$row['count'];
-
-        // Classer les types
-        if (strpos($type, 'ruby') !== false) {
-            $type = 'ruby';
-        } elseif (strpos($type, 'stamina') !== false) {
-            $type = 'stamina';
-        } else {
-            $type = 'other';
-        }
-
-        if (!in_array($day, $days)) {
-            $days[] = $day;
-        }
-
-        if (!isset($couponData[$day])) {
-            $couponData[$day] = ['ruby' => 0, 'stamina' => 0, 'other' => 0];
-        }
-
-        $couponData[$day][$type] += $count;
-    }
-
-    // Inverser l'ordre des jours pour avoir du plus ancien au plus récent
-    $days = array_reverse($days);
-
-    // Préparer les séries pour le graphique
-    $series = [
-        [
-            'name' => 'Ruby',
-            'data' => [],
-            'color' => '#FF0000' // Rouge
-        ],
-        [
-            'name' => 'Stamina',
-            'data' => [],
-            'color' => '#FFFF00' // Jaune
-        ],
-        [
-            'name' => 'Autre',
-            'data' => [],
-            'color' => '#800080' // Violet
-        ]
-    ];
-
-    foreach ($days as $day) {
-        $series[0]['data'][] = $couponData[$day]['ruby'] ?? 0;
-        $series[1]['data'][] = $couponData[$day]['stamina'] ?? 0;
-        $series[2]['data'][] = $couponData[$day]['other'] ?? 0;
-    }
-
-    // Fermer la connexion
-    $db->close();
-} catch (Exception $e) {
-    die("Erreur: " . $e->getMessage());
-}
+$db = new SQLite3(__DIR__ . '/db/database.db');
+$stmt = $db->prepare("SELECT * FROM coupons");
+$result = $stmt->execute();
+$coupons = $result->fetchArray(SQLITE3_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -128,6 +40,16 @@ try {
 
     <?php require_once __DIR__ . '/inc/aside.php'; ?>
     <main>
+
+        <div class="container">
+            <div class="logsfetch"></div>
+            <div class="coupons"></div>
+            <div class="totalcoupon">
+            </div>
+            <div class="graphbytype"></div>
+            <div class="usercharacter"></div>
+            <div class="teams"></div>
+        </div>
 
     </main>
 
