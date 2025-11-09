@@ -2,8 +2,10 @@
 
 Sword Master Story, Application for coupons with a little automated dashboard. 
 
-> [!NOTE]
-> SMSDv2 is still being tested. For the time being, please redirect you to the old version of [SMS Dashboard](https://github.com/kerogs/Sword-Master-Story-Dashboard).
+> [!IMPORTANT]
+> SMSDv2 is now a discontinued version.  
+> You can access the new and improved release here:  
+> 👉 [SMSDv3 - Sword Master Story Dashboard](https://github.com/kerogs/sword-master-story-dashboard-3)
 
 # Features
 - auto fetch codes
